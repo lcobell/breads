@@ -14,16 +14,17 @@ breads.get("/new", (req, res) => {
   res.render("new");
 });
 // SHOW
+// SHOW
 breads.get("/:arrayIndex", (req, res) => {
   if (Bread[req.params.arrayIndex]) {
     res.render("Show", {
       bread: Bread[req.params.arrayIndex],
+      index: req.params.arrayIndex,
     });
   } else {
-    res.send("404");
+    res.render("404");
   }
 });
-
 // CREATE
 breads.post("/", (req, res) => {
   if (!req.body.image) {
@@ -36,7 +37,12 @@ breads.post("/", (req, res) => {
     req.body.hasGluten = false;
   }
   Bread.push(req.body);
-  res.redirect("/breads");
+  res.status(303).redirect("/breads");
 });
 
+// DELETE
+breads.delete("/:indexArray", (req, res) => {
+  Bread.splice(req.params.indexArray, 1);
+  res.status(303).redirect("/breads");
+});
 module.exports = breads;
