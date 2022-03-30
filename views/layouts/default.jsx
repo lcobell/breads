@@ -18,6 +18,8 @@ function Default(html) {
           crossOrigin="anonymous"
         />
         <link rel="stylesheet" href="/main.css" />
+        <link rel="shortcut icon" type="image/png" href="bread.png" />
+        ...
       </head>
       <body>
         <div className="wrapper">
