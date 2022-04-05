@@ -22,6 +22,7 @@ breads.get("/:id/edit", (req, res) => {
     console.log(foundBread);
     res.render("edit", {
       bread: foundBread,
+      id: req.params.id,
     });
   });
 });
